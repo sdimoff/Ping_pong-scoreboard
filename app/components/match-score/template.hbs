@@ -1,18 +1,22 @@
 <div class="container">
   <h2>Latest games</h2>
-  {{#each matches as |match|}}
+  {{#each matchScores.matches as |match|}}
     <div class="match">
       <div>
-        <span>{{match.playerOnePic}}</span>
         <span class="{{if match.firstWon 'winner'}}"></span>
+        <span class="match__player-avatar">
+          <img src="{{match.playerOnePic}}" alt="First player's picture">
+        </span>
         <span>{{match.playerOneName}}</span>
-        <span>{{match.latestScore}}</span>
+        <span class="match__latest-score">{{match.latestScore}}</span>
         <span>{{match.playerTwoName}}</span>
+        <span class="match__player-avatar">
+          <img src="{{match.playerTwoPic}}" alt="Second player's picture">
+        </span>
         <span class="{{unless match.firstWon 'winner'}}"></span>
-        <span class="player-two-pic">{{match.playerTwoPic}}</span>
-        <span class="delete fa fa-trash"></span>
+        <span class="match__delete fa fa-trash" {{action 'deleteMatch' match}}></span>
       </div>
-      <div class="previous">
+      <div class="match__previous">
         {{#each match.previousScores as |previousScore|}}
           {{previousScore}} |
         {{/each}}

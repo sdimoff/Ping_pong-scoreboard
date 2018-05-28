@@ -1,0 +1,35 @@
+.add-game {
+  text-align: center;
+  padding: 2rem;
+
+  select {
+    width: 12rem;
+    height: 2rem;
+    margin: 0 1rem;
+    font-size: 1rem;
+  }
+
+  &__button {
+    margin: 1.5rem;
+    background-color: #7cb5ff;
+    font-size: 1rem;
+    color: #fff;
+  }
+}
+
+@media (max-width: 40rem) {
+  .fa-trash {
+    display: block;
+  }
+
+  .add-game {
+
+    &__versus {
+      display: block;
+      margin: 1rem 0;
+    }
+  }
+}
+
+
+

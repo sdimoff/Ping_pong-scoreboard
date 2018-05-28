@@ -1,27 +1,22 @@
+body {
+  color: #4f4b80;
+  font-family: HelveticaNeue-Light;
+}
+
 .container {
   padding: 1rem 1.5rem;
   font-size: 1.5rem;
   font-weight: 500;
   text-align: center;
 }
-div {
-
-  /*margin-top: 1.5rem;*/
-}
 
 .winner:before {
   content: ' \25CF';
   font-size: 20px;
-  color: deepskyblue;
+  color: #7cb5ff;
 }
 
-/*.second-won:after {*/
-  /*content: ' \25CF';*/
-  /*font-size: 20px;*/
-  /*color: deepskyblue;*/
-/*}*/
-
-.delete {
+.match__delete {
   float: right;
   color: #528CE0;
   position: relative;
@@ -31,4 +26,49 @@ div {
 
 .match {
   margin-top: 1.5rem;
+}
+.match__player-avatar img{
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.match__previous {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 40rem) {
+  .match__previous {
+    width: 60%;
+    display: inline-block;
+  }
+}
+
+.add-game {
+  text-align: center;
+  padding: 2rem;
+}
+.add-game select {
+  width: 12rem;
+  height: 2rem;
+  margin: 0 1rem;
+  font-size: 1rem;
+}
+.add-game__button {
+  margin: 1.5rem;
+  background-color: #7cb5ff;
+  font-size: 1rem;
+  color: #fff;
+  padding: .6rem 1.5rem;
+  border: none;
+}
+
+@media (max-width: 40rem) {
+  .fa-trash {
+    display: block;
+  }
+
+  .add-game__versus {
+    margin: 1rem 0;
+    display: block;
+  }
 }

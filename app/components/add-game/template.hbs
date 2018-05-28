@@ -1,0 +1,25 @@
+<div class="add-game">
+  <h2>Add games</h2>
+  <form action="#">
+    <select name='playerOne' onchange={{action "pickPlayer" true}}>
+      <option selected="selected"></option>
+      {{#each matchScores.players as |player|}}
+        {{#if player.home.show}}
+          <option value="{{player.name}}">{{player.name}}</option>
+        {{/if}}
+      {{/each}}
+    </select>
+    <span class="add-game__versus">VS</span>
+    <select name='playerTwo' onchange={{action "pickPlayer" false}}>
+      <option selected="selected"></option>
+      {{#each matchScores.players as |player|}}
+        {{#if player.guest.show}}
+          <option value="{{player.name}}">{{player.name}}</option>
+        {{/if}}
+      {{/each}}
+    </select>
+    <div>
+      <button class="add-game__button" {{action 'addGame'}}>Add game</button>
+    </div>
+  </form>
+</div>
