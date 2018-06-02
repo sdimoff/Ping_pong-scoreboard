@@ -2,11 +2,16 @@
   text-align: center;
   padding: 2rem;
 
-  select {
+  input {
     width: 12rem;
     height: 2rem;
     margin: 0 1rem;
     font-size: 1rem;
+  }
+
+  &__suggestions {
+    display: flex;
+    flex-direction: column;
   }
 
   &__button {

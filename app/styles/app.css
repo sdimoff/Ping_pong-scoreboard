@@ -47,11 +47,15 @@ body {
   text-align: center;
   padding: 2rem;
 }
-.add-game select {
+.add-game input {
   width: 12rem;
   height: 2rem;
   margin: 0 1rem;
   font-size: 1rem;
+}
+.add-game__suggestions {
+  display: flex;
+  flex-direction: column;
 }
 .add-game__button {
   margin: 1.5rem;

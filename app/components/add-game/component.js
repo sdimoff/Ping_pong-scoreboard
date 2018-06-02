@@ -4,39 +4,32 @@ import EmberObject from '@ember/object';
 const { inject } = Ember;
 
 export default Component.extend({
+  matched: null,
+
   playerOne:'',
 
   playerTwo:'',
 
   matchScores: inject.service(),
 
-  resetPlayers(players, prop) {
-    players.forEach(function (e) {
-      e[prop].set('show', true);
-    });
-  },
-
   actions: {
-    pickPlayer(homePlayer, event) {
+    searchPlayer() {
       const players = this.get('matchScores.players');
-      const playerToRemove = players.filter(player => player.name === event.target.value)[0];
+      const matched = players.filter(player => player.name.includes(this.value))
 
+      this.set('matched', matched);
+    },
+
+    setPlayer(name) {
       if (event.target.name === 'playerOne') {
-        this.set('playerOne', event.target.value);
+        this.set('playerOne', name);
       } else {
-        this.set('playerTwo', event.target.value);
-      }
-
-      if (homePlayer) {
-        this.resetPlayers(players, 'guest');
-        playerToRemove.guest.set('show', false);
-      } else {
-        this.resetPlayers(players, 'home');
-        playerToRemove.home.set('show', false);
+        this.set('playerTwo', name);
       }
     },
 
     addGame() {
+      debugger;
       const matches = this.get('matchScores.matches');
 
       matches.addObject(EmberObject.create({
