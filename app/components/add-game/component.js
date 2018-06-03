@@ -4,7 +4,9 @@ import EmberObject from '@ember/object';
 const { inject } = Ember;
 
 export default Component.extend({
-  matched: null,
+  matchedOne: null,
+
+  matchedTwo: null,
 
   playerOne:'',
 
@@ -15,21 +17,32 @@ export default Component.extend({
   actions: {
     searchPlayer() {
       const players = this.get('matchScores.players');
-      const matched = players.filter(player => player.name.includes(this.value))
+      const matched = players.filter(player => player.name.includes(event.target.value));
 
-      this.set('matched', matched);
+      if (event.target.value === '') {
+        this.set('matched', null);
+      } else {
+        if (event.target.name === 'playerOne') {
+          this.set('matchedOne', matched);
+        } else {
+          this.set('matchedTwo', matched);
+        }
+      }
     },
 
-    setPlayer(name) {
-      if (event.target.name === 'playerOne') {
-        this.set('playerOne', name);
+    setPlayer(playerName) {
+      if (event.target.getAttribute('name') === 'playerOne') {
+        this.set('playerOne', playerName);
+        this.set('value', playerName);
+        this.set('matchedOne', null);
       } else {
-        this.set('playerTwo', name);
+        this.set('playerTwo', playerName);
+        event.target.parentElement.previousElementSibling.value=playerName;
+        this.set('matchedTwo', null);
       }
     },
 
     addGame() {
-      debugger;
       const matches = this.get('matchScores.matches');
 
       matches.addObject(EmberObject.create({

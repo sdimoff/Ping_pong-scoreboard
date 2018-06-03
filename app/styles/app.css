@@ -52,10 +52,22 @@ body {
   height: 2rem;
   margin: 0 1rem;
   font-size: 1rem;
+  outline-width: 0;
 }
-.add-game__suggestions {
+.add-game__select {
+  display: inline-table;
+}
+.add-game__select__suggestions {
   display: flex;
   flex-direction: column;
+  width: 12.22rem;
+  margin: 0 auto;
+  border: 0.0625rem solid #d2d2d2;
+  border-top: 0;
+}
+.add-game__select__suggestions > span {
+  padding: 1rem 0;
+  cursor: pointer;
 }
 .add-game__button {
   margin: 1.5rem;

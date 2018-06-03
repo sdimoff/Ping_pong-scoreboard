@@ -7,7 +7,7 @@ module('Acceptance | add game', function(hooks) {
 
   test('New match is added in the scoreboard when the user clicks the button', async function(assert) {
     await visit('/');
-debugger;
+
     const matchNumber = $('.match').length;
 
     $('.add-game__button').click();

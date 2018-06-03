@@ -1,21 +1,29 @@
 <div class="add-game">
   <h2>Add games</h2>
   <form action="#">
-    {{input name='playerOne' placeholder='Look for player' value=value input=(action 'searchPlayer')}}
-  <div class="add-game__suggestions">
-    {{#each matched as |matchedPlayer|}}
-      <span name='playerOne' onclick={{action 'setPlayer' matchedPlayer.name}}>{{matchedPlayer.name}}</span>
-    {{/each}}
-  </div>
-  <span class="add-game__versus">VS</span>
-    {{input name='playerOne' placeholder='Look for player' value=value input=(action 'searchPlayer')}}
-  <div class="add-game__suggestions">
-    {{#each matched as |matchedPlayer|}}
-      <span name='playerTwo' onclick={{action 'setPlayer' matchedPlayer.name}}>{{matchedPlayer.name}}</span>
-    {{/each}}
-  </div>
-  <div>
-    <button class="add-game__button" {{action 'addGame'}}>Add game</button>
-  </div>Се
-</form>
+    <div class="add-game__select">
+      {{input name='playerOne' placeholder='Look for player' value=value input=(action 'searchPlayer')}}
+      {{#if matchedOne}}
+        <div class="add-game__select__suggestions">
+          {{#each matchedOne as |matchedPlayer|}}
+            <span name='playerOne' onclick={{action 'setPlayer' matchedPlayer.name}}>{{matchedPlayer.name}}</span>
+          {{/each}}
+        </div>
+      {{/if}}
+    </div>
+    <span class="add-game__versus">VS</span>
+    <div class="add-game__select">
+      {{input name='playerTwo' placeholder='Look for player' input=(action 'searchPlayer')}}
+      {{#if matchedTwo}}
+        <div class="add-game__select__suggestions">
+          {{#each matchedTwo as |matchedPlayer|}}
+            <span name='playerTwo' onclick={{action 'setPlayer' matchedPlayer.name}}>{{matchedPlayer.name}}</span>
+          {{/each}}
+        </div>
+      {{/if}}
+    </div>
+    <div>
+      <button class="add-game__button" {{action 'addGame'}}>Add game</button>
+    </div>
+  </form>
 </div>
