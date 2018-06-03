@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import { module, test } from 'qunit';
 import { visit } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
@@ -10,7 +11,18 @@ module('Acceptance | add game', function(hooks) {
 
     const matchNumber = $('.match').length;
 
+    $('.add-game__select > input:eq(0)').val('Emily M. Mills');
+    $('.add-game__select > input:eq(1)').val('Feng Yang');
     $('.add-game__button').click();
     assert.equal($('.match').length, matchNumber + 1, 'New match has been added');
+  });
+
+  test('Match is removed from the list when delete button is pressed', async function(assert) {
+    await visit('/');
+
+    const matchNumber = $('.match').length;
+
+    $('.match__delete:eq(1)').click();
+    assert.equal($('.match').length, matchNumber - 1, 'Match deleted');
   });
 });
