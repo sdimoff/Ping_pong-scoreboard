@@ -2,22 +2,22 @@
   <h2>Add games</h2>
   <form action="#">
     <div class="add-game__select">
-      {{input name='playerOne' placeholder='Look for player' value=value input=(action 'searchPlayer')}}
+      {{input name='playerOne' placeholder='Look for player' value=playerOne }}
       {{#if matchedOne}}
         <div class="add-game__select__suggestions">
           {{#each matchedOne as |matchedPlayer|}}
-            <span name='playerOne' onclick={{action 'setPlayer' matchedPlayer.name}}>{{matchedPlayer.name}}</span>
+            <span name='playerOne' onclick={{action 'setPlayer' 'playerOne' matchedPlayer.name}}>{{matchedPlayer.name}}</span>
           {{/each}}
         </div>
       {{/if}}
     </div>
     <span class="add-game__versus">VS</span>
     <div class="add-game__select">
-      {{input name='playerTwo' placeholder='Look for player' input=(action 'searchPlayer')}}
+      {{input name='playerTwo' placeholder='Look for player' value=playerTwo }}
       {{#if matchedTwo}}
         <div class="add-game__select__suggestions">
           {{#each matchedTwo as |matchedPlayer|}}
-            <span name='playerTwo' onclick={{action 'setPlayer' matchedPlayer.name}}>{{matchedPlayer.name}}</span>
+            <span name='playerTwo' onclick={{action 'setPlayer' 'playerTwo' matchedPlayer.name}}>{{matchedPlayer.name}}</span>
           {{/each}}
         </div>
       {{/if}}

@@ -2,6 +2,7 @@ import Ember from 'ember';
 import Component from '@ember/component';
 import EmberObject from '@ember/object';
 const { inject } = Ember;
+import { observer } from '@ember/object';
 
 export default Component.extend({
   matchedOne: null,
@@ -14,42 +15,33 @@ export default Component.extend({
 
   matchScores: inject.service(),
 
+  matchedOneComputed: observer('playerOne' , function () {
+    const { playerOne } = this;
+
+    const matches = playerOne === '' ? null : this.getFilteredPlayers(playerOne);
+    this.set('matchedOne', matches);
+  }),
+
+  matchedTwoComputed: observer('playerTwo' , function () {
+    const { playerTwo } = this;
+    const matches = playerTwo === '' ? null : this.getFilteredPlayers(playerTwo);
+    this.set('matchedTwo', matches);
+  }),
+
+  getFilteredPlayers(value) {
+    return this.get('matchScores.players').filter(player => player.name.includes(value))
+  },
+
   actions: {
-    searchPlayer() {
-      const players = this.get('matchScores.players');
-      const matched = players.filter(player => player.name.includes(event.target.value));
-
-      if (event.target.name === 'playerOne') {
-        this.set('playerOne', '');
-
-        if (event.target.value === '') {
-          this.set('matchedOne', null);
-        } else {
-          this.set('matchedOne', matched);
-        }
-      } else {
-        this.set('playerTwo', '');
-
-        if (event.target.value === '') {
-          this.set('matchedTwo', null);
-        } else {
-          this.set('matchedTwo', matched);
-        }
-      }
-    },
-
-    setPlayer(playerName) {
+    setPlayer(whichPlayer, playerName) {
       if (playerName !== this.playerOne &&
           playerName !== this.playerTwo) {
-        if (event.target.getAttribute('name') === 'playerOne') {
-          this.set('playerOne', playerName);
-          this.set('value', playerName);
-          this.set('matchedOne', null);
-        } else {
-          this.set('playerTwo', playerName);
-          event.target.parentElement.previousElementSibling.value = playerName;
-          this.set('matchedTwo', null);
-        }
+
+        this.set(whichPlayer, playerName);
+
+        this.set('matchedOne', null);
+        this.set('matchedTwo', null);
+
       }
     },
 
