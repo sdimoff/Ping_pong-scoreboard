@@ -36,12 +36,9 @@ export default Component.extend({
     setPlayer(whichPlayer, playerName) {
       if (playerName !== this.playerOne &&
           playerName !== this.playerTwo) {
-
         this.set(whichPlayer, playerName);
-
         this.set('matchedOne', null);
         this.set('matchedTwo', null);
-
       }
     },
 

@@ -3,24 +3,20 @@
   <form action="#">
     <div class="add-game__select">
       {{input name='playerOne' placeholder='Look for player' value=playerOne }}
-      {{#if matchedOne}}
-        <div class="add-game__select__suggestions">
-          {{#each matchedOne as |matchedPlayer|}}
-            <span name='playerOne' onclick={{action 'setPlayer' 'playerOne' matchedPlayer.name}}>{{matchedPlayer.name}}</span>
-          {{/each}}
-        </div>
-      {{/if}}
+      <div class="add-game__select__suggestions">
+        {{#each matchedOne as |matchedPlayer|}}
+          <span name='playerOne' onclick={{action 'setPlayer' 'playerOne' matchedPlayer.name}}>{{matchedPlayer.name}}</span>
+        {{/each}}
+      </div>
     </div>
     <span class="add-game__versus">VS</span>
     <div class="add-game__select">
       {{input name='playerTwo' placeholder='Look for player' value=playerTwo }}
-      {{#if matchedTwo}}
-        <div class="add-game__select__suggestions">
-          {{#each matchedTwo as |matchedPlayer|}}
-            <span name='playerTwo' onclick={{action 'setPlayer' 'playerTwo' matchedPlayer.name}}>{{matchedPlayer.name}}</span>
-          {{/each}}
-        </div>
-      {{/if}}
+      <div class="add-game__select__suggestions">
+        {{#each matchedTwo as |matchedPlayer|}}
+          <span name='playerTwo' onclick={{action 'setPlayer' 'playerTwo' matchedPlayer.name}}>{{matchedPlayer.name}}</span>
+        {{/each}}
+      </div>
     </div>
     <div>
       <button class="add-game__button" {{action 'addGame'}}>Add game</button>
