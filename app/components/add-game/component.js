@@ -17,8 +17,8 @@ export default Component.extend({
 
   matchedOneComputed: observer('playerOne' , function () {
     const { playerOne } = this;
-
     const matches = playerOne === '' ? null : this.getFilteredPlayers(playerOne);
+
     this.set('matchedOne', matches);
   }),
 
