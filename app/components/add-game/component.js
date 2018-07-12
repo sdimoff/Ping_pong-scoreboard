@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import Component from '@ember/component';
 import EmberObject from '@ember/object';
-const { inject } = Ember;
+import { inject as service } = '@ember/service';
 import { observer } from '@ember/object';
 
 export default Component.extend({
@@ -13,7 +13,7 @@ export default Component.extend({
 
   playerTwo:'',
 
-  matchScores: inject.service(),
+  matchScores: service(),
 
   matchedOneComputed: observer('playerOne' , function () {
     const { playerOne } = this;
