@@ -1,7 +1,6 @@
-import Ember from 'ember';
 import Component from '@ember/component';
 import EmberObject from '@ember/object';
-import { inject as service } = '@ember/service';
+import { inject as service } from '@ember/service';
 import { observer } from '@ember/object';
 
 export default Component.extend({
